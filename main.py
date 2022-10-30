@@ -17,10 +17,36 @@ app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 jwt = JWTManager(app)
 
 
+@app.route('/authorization', methods=['POST', 'GET'])
+def authorization():
+    if request.method == 'GET':
+        return render_template('index.html')
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'GET':
-        return render_template('index.html', url='')
+        list_data = [[{'image_url': 'https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWQ1MmppaXU2Z3ZybHh0YWtmN3h5MnJ2Ynh3eGkzNHNzdjd2c2h3MzVsM2hvaGRkdDY3bGUvaW1hZ2UucG5n',
+                      'name': 'Doctor Strange',
+                      'description': 'Ticket to Doctor Strange premier'},
+                     {
+                         'image_url': 'https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWQ1MmppaXU2Z3ZybHh0YWtmN3h5MnJ2Ynh3eGkzNHNzdjd2c2h3MzVsM2hvaGRkdDY3bGUvaW1hZ2UucG5n',
+                         'name': 'Doctor Strange',
+                         'description': 'Ticket to Doctor Strange premier'},
+                     {
+                         'image_url': 'https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWQ1MmppaXU2Z3ZybHh0YWtmN3h5MnJ2Ynh3eGkzNHNzdjd2c2h3MzVsM2hvaGRkdDY3bGUvaW1hZ2UucG5n',
+                         'name': 'Doctor Strange',
+                         'description': 'Ticket to Doctor Strange premier'}],
+                     [{
+                         'image_url': 'https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWQ1MmppaXU2Z3ZybHh0YWtmN3h5MnJ2Ynh3eGkzNHNzdjd2c2h3MzVsM2hvaGRkdDY3bGUvaW1hZ2UucG5n',
+                         'name': 'Doctor Strange',
+                         'description': 'Ticket to Doctor Strange premier'},
+                     {
+                         'image_url': 'https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWQ1MmppaXU2Z3ZybHh0YWtmN3h5MnJ2Ynh3eGkzNHNzdjd2c2h3MzVsM2hvaGRkdDY3bGUvaW1hZ2UucG5n',
+                         'name': 'Doctor Strange',
+                         'description': 'Ticket to Doctor Strange premier'}]
+                     ]
+        return render_template('main_page.html', list_data=list_data)
 
 
 @app.route('/login', methods=['POST'])
