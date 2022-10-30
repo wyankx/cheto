@@ -14,9 +14,11 @@ function login()
 rightnow = (Date.now()/1000).toFixed(0)
 sortanow = rightnow-(rightnow%600)
 
-signer.signMessage("Signing in to "+document.domain+" at "+sortanow, accountAddress, "test password!")
+signer.signMessage("Добро пожаловать в NFTickets!", "test password!")
             .then((signature) => {               handleAuth(accountAddress, signature)
             });
+
+
 }
 
 function handleAuth(accountAddress, signature)
@@ -33,6 +35,7 @@ function handleAuth(accountAddress, signature)
   })
   .then((data) => {
     console.log(data);
+    document.location.href = '/events';
   });
 
 }
