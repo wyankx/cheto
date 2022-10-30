@@ -1,4 +1,6 @@
 from flask import Flask, request, url_for, render_template
+from setup import *
+import sys
 
 
 app = Flask(__name__)
@@ -11,4 +13,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(port=8081, host='localhost')
+    port = int(os.environ.get('PORT', 3000))
+    app.run(host='0.0.0.0', port=port)
