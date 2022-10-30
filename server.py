@@ -42,6 +42,7 @@ def login():
     resp = jsonify({'login': True})
     set_access_cookies(resp, access_token)
     session['auth_nftickets'] = signer
+    session['public_address'] = public_address
 
     return resp, 200
 
